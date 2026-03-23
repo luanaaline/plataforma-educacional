@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Criação - Redação</title>
+  <link rel="stylesheet" href="criacao.css" />
+  <link rel="icon" type="image/png" href="psiu.png" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-section">
+      <div class="info">
+        <p class="tema-destaque"><strong>Tema:</strong> <span id="temaRedacao">Carregando...</span></p>
+        <p><strong>Tipo De Texto:</strong> <span id="tipoRedacao">Carregando...</span></p>
+        <p><strong>Gênero Textual:</strong> <span id="generoRedacao">Carregando...</span></p>
+      </div>
+
+      <div class="writing-area">
+        <div class="paper">
+          <textarea id="writing-area" placeholder="Comece a escrever aqui..."></textarea>
+        </div>
+
+        <div class="save-area">
+          <button id="btnSalvarRedacao">Salvar Redação</button>
+          <button id="btnVoltarLista" class="btn-voltar">Voltar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="timer-info">
+        <h3>Estrutura</h3>
+        <p>Quantidade de linhas: <span id="qtdLinhas">0</span></p>
+        <p>Quantidade de parágrafos: <span id="qtdParagrafos">0</span></p>
+        <p>Tempo: <span id="timer">00:00:00</span></p>
+        <img src="livro.png" alt="Livro" class="livro-image" />
+      </div>
+    </div>
+  </div>
+
+  <script src="criacao.js"></script>
+</body>
+</html>

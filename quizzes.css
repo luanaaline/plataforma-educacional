@@ -1,0 +1,147 @@
+/* === RESET === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* === FUNDO === */
+body {
+    background: #e8d8ff;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+/* === BOTÃO VOLTAR === */
+.btn-voltar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+
+    background: #a678d3;
+    color: white;
+    padding: 10px 22px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 0.2s ease-in-out;
+
+    z-index: 999;
+}
+
+.btn-voltar:hover {
+    background: #8c5cc0;
+    transform: translateY(-3px);
+}
+
+/* === CONTAINER PRINCIPAL === */
+.container {
+    max-width: 1300px;
+    width: 100%;
+    text-align: center;
+}
+
+/* === TÍTULO === */
+.titulo-pagina {
+    font-size: 32px;
+    color: #3a2b56;
+    margin-bottom: 40px;
+    margin-top: 100px;
+}
+
+/* === GRID DAS MATÉRIAS === */
+.subjects {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px;
+    justify-items: center;
+    margin-top: 20px;
+}
+
+/* === CARTÕES === */
+.subject {
+    background: #a678d3;
+    padding: 35px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.2s ease;
+    width: 200px;
+}
+
+.subject img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 15px;
+}
+
+.subject p {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* === HOVER === */
+.subject:hover {
+    background: #8c5cc0;
+    transform: translateY(-6px);
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 1100px) {
+    .subjects {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .subjects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .subjects {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 🌙 DARK MODE — ATIVADO VIA BODY.dark-mode */
+
+body.dark-mode {
+ background: #1b1030;
+}
+
+/* Botão voltar */
+body.dark-mode .btn-voltar {
+ background: #5b3b93;
+ color: #f3eaff;
+}
+
+body.dark-mode .btn-voltar:hover {
+ background: #704eb1;
+}
+
+/* Título */
+body.dark-mode .titulo-pagina {
+ color: #f3eaff;
+}
+
+/* Cartões */
+body.dark-mode .subject {
+ background: #5b3b93;
+}
+
+body.dark-mode .subject:hover {
+ background: #704eb1;
+}
+
+body.dark-mode .subject p {
+ color: #f3eaff;
+}

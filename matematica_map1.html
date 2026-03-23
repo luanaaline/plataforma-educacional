@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Mental – Operações Básicas</title>
+    <link rel="icon" type="image/png" href="psiu.png" />
+
+    <style>
+        /* ---------- MODO CLARO ---------- */
+        body {
+            background: #e6d8f8;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            transition: 0.3s;
+        }
+
+        .titulo {
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            margin-top: 150px;
+            color: #5a2fa0;
+            transition: 0.3s;
+        }
+
+        .imagem-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .imagem-container img {
+            max-width: 45%;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .imagem-container img:hover {
+            transform: scale(1.03);
+        }
+
+        .btn-voltar {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            background: #7b3fe4;
+            padding: 10px 18px;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            transition: 0.3s;
+        }
+
+        .modal-conteudo {
+            display: block;
+            margin: auto;
+            max-width: 90%;
+            max-height: 85%;
+        }
+
+        .fechar {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            font-size: 45px;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .download {
+            position: absolute;
+            right: 50px;
+            background: #7b3fe4;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        /* ---------- MODO ESCURO ---------- */
+        body.dark-mode {
+            background: #0f0b16;
+            color: #eee;
+        }
+
+        body.dark-mode .titulo {
+            color: #b998ff;
+        }
+
+        body.dark-mode .btn-voltar {
+            background: #a06cff;
+        }
+
+        body.dark-mode .modal {
+            background-color: rgba(10, 5, 20, 0.92);
+        }
+
+        body.dark-mode .fechar {
+            color: #d6c6ff;
+        }
+
+        body.dark-mode .download {
+            background: #a06cff;
+        }
+
+        body.dark-mode .imagem-container img {
+            box-shadow: 0 0 15px rgba(150, 120, 255, 0.25);
+        }
+
+    </style>
+</head>
+
+<body> <!-- AGORA SEM .dark-mode -->
+
+    <a href="matematicamp.html" class="btn-voltar">← Voltar</a>
+
+    <div class="titulo">Mapa Mental – Operações Básicas</div>
+
+    <div class="imagem-container">
+        <img src="matematica_map1.png" alt="Mapa Mental Operações Básicas" id="mapa">
+    </div>
+
+    <div id="modal" class="modal">
+        <span id="fechar" class="fechar">&times;</span>
+        <img id="modal-img" class="modal-conteudo">
+        <a id="download" class="download" download="mapa-mental.png">Baixar ⬇</a>
+    </div>
+
+    <script>
+        const mapa = document.getElementById("mapa");
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modal-img");
+        const fechar = document.getElementById("fechar");
+        const download = document.getElementById("download");
+
+        mapa.onclick = function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            download.href = this.src;
+        }
+
+        fechar.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function(e) {
+            if (e.target === modal) modal.style.display = "none";
+        }
+
+         // Aplica tema escuro se estiver salvo
+    const temaSalvo = localStorage.getItem("theme");
+    if (temaSalvo === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+    
+    </script>
+
+</body>
+</html>

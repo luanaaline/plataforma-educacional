@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geografia - Temas</title>
+    <link rel="stylesheet" href="geovd.css">
+    <link rel="icon" type="image/png" href="psiu.png">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="menu-item">
+            <img src="salvos.png" alt="Salvos" class="icon">
+            <span>Salvos</span>
+        </div>
+        <div class="menu-item">
+            <img src="favoritos.png" alt="Favoritos" class="icon">
+            <span>Favoritos</span>
+        </div>
+        <a href="mapasmentais.html" class="menu-item">
+            <img src="voltar.png" alt="Voltar" class="icon">
+            <span>Voltar</span>
+        </a>
+    </div>
+
+    <div class="content">
+        <div class="header">
+            <div class="stars">
+                <img src="estrelas.png" alt="Estrelas decorativas" class="stars-img">
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar tema">
+                <button disabled style="opacity:0.5; cursor:default;">🔍</button>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">Civilizações antigas</div>
+            <div class="card">Idade Média</div>
+            <div class="card">Feudalismo</div>
+            <div class="card">Renascimento</div>
+            <div class="card">Reforma Protestante</div>
+            <div class="card">1° Revolução Industrial</div>
+            <div class="card">2° Revolução Industrial</div>
+            <div class="card">3° Revolução Industrial</div>
+            <div class="card">Revolução Francesa</div>
+            <div class="card">Era Napoleônica</div>
+            <div class="card">Imperialismo e colonialismo</div>
+            <div class="card">Primeira Guerra Mundial</div>
+            <div class="card">Revolução Russa</div>
+            <div class="card">Segunda Guerra Mundial</div>
+            <div class="card">Guerra Fria</div>
+            <div class="card">História do Brasil: período colonial</div>
+            <div class="card">Escravidão no Brasil</div>
+            <div class="card">Independência do Brasil</div>
+            <div class="card">Período imperial</div>
+            <div class="card">República Velha</div>
+            <div class="card">Era Vargas</div>
+            <div class="card">Ditadura militar no Brasil</div>
+            <div class="card">Redemocratização</div>
+        </div>
+    </div>
+
+    <!-- Script da busca automática -->
+    <script>
+        const searchInput = document.querySelector('.search-bar input');
+        const cards = document.querySelectorAll('.card');
+        const grid = document.querySelector('.grid');
+
+        function buscarTema() {
+            const termo = searchInput.value.toLowerCase().trim();
+            let encontrou = false;
+
+            cards.forEach(card => {
+                const texto = card.textContent.toLowerCase();
+                if (texto.includes(termo) || termo === "") {
+                    card.style.display = 'flex';
+                    encontrou = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Mensagem de "nenhum resultado"
+            let mensagem = document.querySelector('.mensagem-nenhum');
+            if (!mensagem) {
+                mensagem = document.createElement('div');
+                mensagem.classList.add('mensagem-nenhum');
+                mensagem.style.textAlign = 'center';
+                mensagem.style.gridColumn = '1 / -1';
+                mensagem.style.fontWeight = '600';
+                mensagem.style.color = '#3e206d';
+                mensagem.style.marginTop = '40px';
+                grid.appendChild(mensagem);
+            }
+
+            if (!encontrou && termo !== "") {
+                mensagem.textContent = 'Nenhum resultado encontrado 😕';
+                mensagem.style.display = 'block';
+            } else {
+                mensagem.style.display = 'none';
+            }
+        }
+
+        // Atualiza automaticamente enquanto digita
+        searchInput.addEventListener('input', buscarTema);
+
+// Aplica tema escuro se estiver salvo
+    const temaSalvo = localStorage.getItem("theme");
+    if (temaSalvo === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+
+    </script>
+</body>
+</html>

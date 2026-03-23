@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redações</title>
+    <link rel="stylesheet" href="reda.css">
+    <link rel="icon" type="image/png" href="psiu.png">
+</head>
+<body>
+    <!-- Botão de Voltar -->
+    <a href="comeco.html" class="back-btn">⬅ Voltar</a>
+
+    <div class="container">
+        <!-- Ilustração -->
+        <div class="illustration">
+            <img src="menina.png" alt="Pessoa escrevendo">
+        </div>
+
+        <!-- Botões principais -->
+        <div class="buttons">
+            <a href="redacao.html" class="btn">INICIAR CRIAÇÃO</a>
+            <a href="redacoesSalvas.html" class="btn">REDAÇÕES SALVAS</a>
+        </div>
+    </div>
+
+<script>
+  // Aplica automaticamente o tema salvo
+  document.addEventListener("DOMContentLoaded", () => {
+    const temaSalvo = localStorage.getItem("theme");
+
+    if (temaSalvo === "dark") {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  });
+</script>
+
+</body>
+</html>

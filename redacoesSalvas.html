@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redações salvas</title>
+  <link rel="stylesheet" href="redacoessalvas.css">
+  <link rel="icon" type="image/png" href="psiu.png">
+</head>
+<body>
+  <div class="container">
+    <h1>Redações salvas</h1>
+
+    <div class="busca-container">
+      <input type="text" id="buscaRedacoes" placeholder="Buscar palavra-chave">
+      <button id="btnBuscar">🔍</button>
+    </div>
+
+    <div id="listaRedacoes" class="lista-redacoes"></div>
+
+    <button class="voltar" onclick="window.location.href='reda.html'">
+      <span class="seta">←</span> Voltar
+    </button>
+
+    <img src="bloco.png" alt="Bloco decorativo" class="bloco-decorativo">
+  </div>
+
+  <!-- Modal Bonitinho -->
+  <div id="modalConfirmacao" class="modal">
+    <div class="modal-conteudo">
+      <h3>Tem certeza que deseja excluir esta redação?</h3>
+      <div class="botoes-modal">
+        <button id="cancelarExclusao" class="btn-cancelar">Cancelar</button>
+        <button id="confirmarExclusao" class="btn-confirmar">Excluir</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="redacoessalvas.js"></script>
+</body>
+</html>

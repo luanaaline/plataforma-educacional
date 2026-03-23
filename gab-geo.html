@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabarito</title>
+ 
+<style>
+    body {
+        background: #e6d4f5;
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+ 
+    h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+ 
+    .card {
+        background: white;
+        width: 80%;
+        margin: 30px auto;
+        padding: 30px;
+        border-radius: 25px;
+        text-align: center;
+    }
+ 
+    .question {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+ 
+    .option {
+        padding: 15px;
+        margin: 10px auto;
+        width: 80%;
+        border-radius: 40px;
+        font-size: 18px;
+        background: #f5e8ff;
+        border: 2px solid transparent;
+    }
+ 
+    .correct {
+        background: #b3ffb3 !important;
+        border: 2px solid green;
+    }
+ 
+    .wrong {
+        background: #ffb3b3 !important;
+        border: 2px solid red;
+    }
+ 
+    .btn-area {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+ 
+    .btn {
+        background: white;
+        padding: 12px 30px;
+        border-radius: 40px;
+        border: 2px solid #000;
+        cursor: pointer;
+        font-size: 18px;
+        transition: .2s;
+    }
+ 
+    .btn:hover {
+        background: #eee;
+    }
+
+/* dark mode */
+
+body.dark-mode {
+    background: #1b1030;            /* Roxo bem escuro */
+    color: #f5e8ff;                 /* Texto roxo claro */
+}
+
+/* Card central */
+body.dark-mode .card {
+    background: #2a183a;            /* Roxo escuro sofisticado */
+    color: #f5e8ff;
+}
+
+/* Título */
+body.dark-mode h1 {
+    color: #e7c6ff;
+}
+
+/* Questão */
+body.dark-mode .question {
+    color: #f5e8ff;
+}
+
+/* Opções */
+body.dark-mode .option {
+    background: #3a2352;            /* Roxo médio escuro */
+    color: #f5e8ff;
+    border-color: transparent;
+}
+
+body.dark-mode .option:hover {
+    background: #4b2b6d;            /* Roxo mais vibrante no hover */
+}
+
+/* Correta */
+body.dark-mode .correct {
+    background: #7effb3 !important; /* Verde corrigido mais neon no roxo */
+    border: 2px solid #32d16d;
+    color: #000;
+}
+
+/* Errada */
+body.dark-mode .wrong {
+    background: #ff8fa3 !important; /* Vermelho-rosado suave */
+    border: 2px solid #ff4d6d;
+    color: #000;
+}
+
+/* Botões */
+body.dark-mode .btn {
+    background: #3a2352;
+    color: #f5e8ff;
+    border: 2px solid #c38aff;
+}
+
+body.dark-mode .btn:hover {
+    background: #4b2b6d;
+}
+
+/* Botões desativados no início */
+body.dark-mode #voltar[style*="none"] {
+    background: #3a2352;
+}
+
+/* Título das questões */
+body.dark-mode h2 {
+    color: #e7c6ff;
+}
+
+</style>
+</head>
+<body>
+ 
+<h1>Gabarito</h1>
+ 
+<div id="gabarito-card"></div>
+ 
+<div class="btn-area">
+    <button id="voltar" class="btn" onclick="prevQuestion()">Voltar</button>
+    <button id="proxima" class="btn" onclick="nextQuestion()">Próxima</button>
+</div>
+ 
+<script>
+const questions = [
+    {
+        q: "O que é responsável pela formação das estações do ano no planeta Terra?",
+        a: ["A distância da Terra até o Sol", "A inclinação do eixo terrestre", "O movimento de rotação", "A gravidade solar"],
+        correct: 1
+    },
+    {
+        q: "O que representa a escala 1:100.000 em um mapa?",
+        a: ["Cada 100.000 cm no mapa valem 1 cm na realidade", "Cada 1 cm no mapa vale 100.000 cm na realidade", "Cada 1 cm no mapa vale 10 km na realidade", "O mapa é ampliado 100 mil vezes"],
+        correct: 1
+    },
+    {
+        q: "Qual é a forma de relevo predominante na Amazônia brasileira?",
+        a: ["Depressões periféricas", "Planícies", "Chapadas", "Planaltos cristalinos"],
+        correct: 1
+    },
+    {
+        q: "O que caracteriza um país desenvolvido?",
+        a: ["Alta taxa de natalidade", "Economia baseada no setor primário", "Alto IDH e forte industrialização", "Baixa expectativa de vida"],
+        correct: 2
+    },
+    {
+        q: "O que significa “êxodo rural”?",
+        a: ["A migração de pessoas para zonas agrícolas", "A saída de pessoas do campo para a cidade", "A migração internacional", "O crescimento da população do campo"],
+        correct: 1
+    },
+    {
+        q: "A produção agrícola e a extração de minérios pertencem a qual setor da economia?",
+        a: ["Setor primário", "Setor secundário", "Setor terciário", "Setor quaternário"],
+        correct: 0
+    },
+    {
+        q: "Qual bioma brasileiro é o mais devastado proporcionalmente devido à agricultura e pecuária?",
+        a: ["Pantanal", "Cerrado", "Caatinga", "Pampa"],
+        correct: 1
+    },
+    {
+        q: "Qual região brasileira possui clima equatorial?",
+        a: ["Nordeste", "Sudeste", "Centro-Oeste", "Norte"],
+        correct: 3
+    },
+    {
+        q: "O que é “metrópole”?",
+        a: ["Uma cidade pequena com baixa densidade", "Uma cidade isolada sem influência regional", "Uma grande cidade com forte influência econômica e populacional", "Uma cidade exclusivamente industrial"],
+        correct: 2
+    },
+    {
+        q: "Qual é o maior rio em volume de água do mundo?",
+        a: ["Rio Nilo", "Rio Yangtzé", "Rio Amazonas", "Rio Mississipi"],
+        correct: 2
+    }
+];
+ 
+const answers = JSON.parse(localStorage.getItem("quizAnswers"));
+let current = 0;
+ 
+function loadGabarito() {
+    const card = document.getElementById("gabarito-card");
+    card.innerHTML = "";
+ 
+    let wrap = document.createElement("div");
+    wrap.classList.add("card");
+ 
+    let title = document.createElement("h2");
+    title.innerText = "QUESTÃO " + (current + 1);
+ 
+    let qText = document.createElement("p");
+    qText.classList.add("question");
+    qText.innerText = questions[current].q;
+ 
+    wrap.appendChild(title);
+    wrap.appendChild(qText);
+ 
+    questions[current].a.forEach((opt, i) => {
+        let div = document.createElement("div");
+        div.classList.add("option");
+        div.innerText = opt;
+ 
+        if (i === questions[current].correct) {
+            div.classList.add("correct");
+        }
+ 
+        if (answers && answers[current] === i && answers[current] !== questions[current].correct) {
+            div.classList.add("wrong");
+        }
+ 
+        wrap.appendChild(div);
+    });
+ 
+    card.appendChild(wrap);
+ 
+    document.getElementById("voltar").style.display = current === 0 ? "none" : "inline-block";
+    document.getElementById("proxima").innerText =
+        current === questions.length - 1 ? "Finalizar" : "Próxima";
+}
+ 
+function nextQuestion() {
+    if (current < questions.length - 1) {
+        current++;
+        loadGabarito();
+    } else {
+        window.location.href = "finish-geo.html";
+    }
+}
+ 
+function prevQuestion() {
+    if (current > 0) {
+        current--;
+        loadGabarito();
+    }
+}
+ 
+loadGabarito();
+
+// Aplica automaticamente o tema salvo
+document.addEventListener("DOMContentLoaded", () => {
+    const temaSalvo = localStorage.getItem("theme");
+
+    if (temaSalvo === "dark") {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  });
+
+
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resultado</title>
+<link rel="icon" type="image/png" href="psiu.png">
+
+<style>
+    body {
+        background-image: url("querida.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .card {
+        background: white;
+        width: 90%;
+        max-width: 450px;
+        padding: 50px 30px;
+        border-radius: 25px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        text-align: center;
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    h1 {
+        font-size: 36px;
+        margin-bottom: 15px;
+        color: #4b2fae;
+    }
+
+    p {
+        font-size: 22px;
+        margin-top: 10px;
+        color: #333;
+    }
+
+    .btn {
+        display: inline-block;
+        background: #4b2fae;
+        color: white;
+        margin-top: 30px;
+        padding: 15px 40px;
+        border-radius: 40px;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+
+    .btn:hover {
+        background: #6e46f0;
+    }
+
+/* DARK MODE */
+
+body.dark-mode {
+   background-image: url("bay.png");
+    
+}
+
+/* Card central */
+body.dark-mode .card {
+    background: #371f4d;                 /* Roxo escuro elegante */
+    color: #f5e8ff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* Título */
+body.dark-mode h1 {
+    color: #e7c6ff;
+}
+
+/* Texto */
+body.dark-mode p {
+    color: #f5e8ff;
+}
+
+/* Botão */
+body.dark-mode .btn {
+    background: #7043a0;
+    color: #f5e8ff;
+}
+
+body.dark-mode .btn:hover {
+    background: #4b2b6d;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<div class="card">
+    <h1>Resultado</h1>
+    <p id="resultado"></p>
+    <button class="btn" onclick="voltar()">Voltar ao início</button>
+</div>
+
+<script>
+const questions = [
+    { correct: 2 }, 
+    { correct: 1 },
+    { correct: 1 },
+    { correct: 0 }, 
+    { correct: 2 }, 
+    { correct: 1 }, 
+    { correct: 1 }, 
+    { correct: 0 }, 
+    { correct: 1 }, 
+    { correct: 1 }  
+];
+
+
+
+ 
+
+
+const answers = JSON.parse(localStorage.getItem("quizAnswers")) || [];
+
+let score = 0;
+
+answers.forEach((ans, i) => {
+    if (ans === questions[i].correct) score++;
+});
+
+document.getElementById("resultado").innerText =
+    `Você acertou ${score} de ${questions.length} perguntas`;
+
+function voltar() {
+    window.location.href = "quizzes.html"; // coloque o nome da sua página inicial
+}
+
+// Aplica automaticamente o tema salvo
+document.addEventListener("DOMContentLoaded", () => {
+    const temaSalvo = localStorage.getItem("theme");
+
+    if (temaSalvo === "dark") {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  });
+
+
+</script>
+
+</body>
+</html>

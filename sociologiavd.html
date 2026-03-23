@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Sociologia - Videoaulas</title>
+ <link rel="icon" type="image/png" href="psiu.png">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:#f7f1ff;color:#3e206d;min-height:100vh}
+.app {display:flex;min-height:100vh;}
+.sidebar{width:180px;background:#e7d5ff;padding:28px 14px;display:flex;flex-direction:column;align-items:center;gap:14px;box-shadow:2px 0 10px rgba(0,0,0,0.06);position:fixed;left:0;top:0;bottom:0;}
+.logo {width:140px;height:100px;background:url('book-character.png') center/contain no-repeat;margin-bottom:6px;}
+.side-btn {width:100%;background:transparent;border:none;padding:10px 12px;border-radius:12px;font-weight:700;color:#3e206d;cursor:pointer;text-align:left;display:flex;align-items:center;gap:10px;transition:0.18s;}
+.side-btn:hover{background:#d9c0ff; transform:translateX(6px)}
+.content {margin-left:220px;padding:36px 48px;width:100%;}
+.header-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:26px;}
+.search-wrap{flex:1;max-width:640px;background:#e9ddff;padding:10px 14px;border-radius:18px;display:flex;align-items:center;gap:8px;}
+.search-wrap input{border:none;background:transparent;outline:none;font-size:15px;color:#3e206d;width:100%;}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.card{background:#c49bff;border-radius:14px;padding:18px;height:160px;display:flex;flex-direction:column;justify-content:space-between;position:relative;transition: transform .18s, box-shadow .18s;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,0.06);}
+.card:hover{transform:translateY(-6px); box-shadow:0 10px 20px rgba(0,0,0,0.09)}
+.card h4{font-size:16px;color:#2b1055;margin-bottom:6px}
+.btns{display:flex;gap:8px;align-items:center;}
+.small-btn{background:#fff;border:none;border-radius:999px;padding:8px 10px;font-weight:700;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,0.08)}
+.small-btn:hover{transform:scale(1.06)}
+.note {margin-top:18px;color:#5a3c7a;font-weight:700;}
+@media(max-width:1200px){ .grid{grid-template-columns:repeat(3,1fr)} }
+@media(max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} .content{padding:22px} }
+@media(max-width:600px){ .sidebar{display:none} .content{margin-left:20px;padding:18px} .grid{grid-template-columns:1fr} }
+body.dark-mode{background:#1e0035;color:#e0d6ff}
+body.dark-mode .sidebar{background:#2a0050}
+body.dark-mode .search-wrap{background:#fdfcff}
+body.dark-mode .card{background:#4a009e;color:#f0e5ff}
+body.dark-mode .card h4{color:#f0e5ff}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar" aria-label="Barra lateral">
+    <div class="logo" aria-hidden="true"></div>
+    <button class="side-btn" id="btnTodos">📚 Todos</button>
+    <button class="side-btn" id="btnSalvos">💾 Salvos</button>
+    <button class="side-btn" id="btnFavoritos">⭐ Favoritos</button>
+    <div style="flex:1"></div>
+    <button class="side-btn" id="btnVoltar">⬅ Voltar</button>
+  </aside>
+
+  <main class="content">
+    <div class="header-row">
+      <div class="search-wrap">
+        <input id="searchInput" placeholder="Buscar tema (ex: Cultura, Desigualdade...)" />
+        <button id="searchBtn" class="small-btn">🔍</button>
+      </div>
+      <div style="min-width:120px;text-align:right;color:#6a1b9a;font-weight:700">Sociologia — Videoaulas</div>
+    </div>
+
+    <div id="grid" class="grid" aria-live="polite"></div>
+    <div id="mensagem" class="note" style="display:none"></div>
+  </main>
+</div>
+
+<script>
+const aulas = [
+  { titulo: "Conceito de Sociedade", link: "https://www.youtube.com/watch?v=xE0AtIi22a0" },
+  { titulo: "Cultura e Diversidade Cultural", link: "https://www.youtube.com/watch?v=VHHuUNQVq2M" },
+  { titulo: "Estratificações Sociais", link: "https://www.youtube.com/watch?v=DlME0zz3pW0" },
+  { titulo: "Classes Sociais", link: "https://www.youtube.com/watch?v=R3BozXvi8DY" },
+  { titulo: "Mobilidade Social", link: "https://www.youtube.com/watch?v=GxHt9EyDrnA&t=311s" },
+  { titulo: "Instituições Sociais", link: "https://www.youtube.com/watch?v=FNiuolxcLqg&t=30s" },
+  { titulo: "Globalização e Efeitos Sociais", link: "https://www.youtube.com/watch?v=5LM03AZxaQw" },
+  { titulo: "Movimentos Sociais", link: "https://www.youtube.com/watch?v=N6FSOCflYMc" },
+  { titulo: "Poder", link: "https://www.youtube.com/watch?v=UI67v44GQ6A" },
+  { titulo: "Desigualdade Racial", link: "https://www.youtube.com/watch?v=PWvwlVlSZgM" },
+  { titulo: "Sociologia Urbana e Rural", link: "https://www.youtube.com/watch?v=sosO8RdZp-w" },
+  { titulo: "Bioética", link: "https://www.youtube.com/watch?v=TRh_NjT98Co" }
+  
+];
+
+const KEY_SALVOS = 'sociologia_salvos_v1';
+const KEY_FAVS   = 'sociologia_favs_v1';
+let filtro = 'todos';
+let salvos = JSON.parse(localStorage.getItem(KEY_SALVOS) || '[]');
+let favs   = JSON.parse(localStorage.getItem(KEY_FAVS) || '[]');
+const gridEl = document.getElementById('grid');
+const msgEl = document.getElementById('mensagem');
+const searchInput = document.getElementById('searchInput');
+
+function salvarLocal(key, arr){ localStorage.setItem(key, JSON.stringify(arr)); }
+
+function renderizar(){
+  gridEl.innerHTML = '';
+  msgEl.style.display = 'none';
+  let indices = aulas.map((_,i)=>i);
+  if(filtro === 'salvos') indices = salvos.slice();
+  if(filtro === 'favoritos') indices = favs.slice();
+  const termo = (searchInput.value || '').toLowerCase().trim();
+  indices = indices.filter(i => aulas[i] && aulas[i].titulo.toLowerCase().includes(termo));
+  if(indices.length === 0){
+    msgEl.textContent = filtro === 'salvos' ? 'Nenhuma videoaula salva.' :
+                     filtro === 'favoritos' ? 'Nenhum favorito.' :
+                     'Nenhum resultado encontrado.';
+    msgEl.style.display = 'block';
+    return;
+  }
+  indices.forEach(i => {
+    const item = aulas[i];
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.setAttribute('data-idx', i);
+    card.innerHTML = `
+      <div><h4>${item.titulo}</h4></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div class="btns">
+          <button class="small-btn" data-action="assistir">▶️ Assistir</button>
+          <button class="small-btn" data-action="salvar">${ salvos.includes(i) ? '✔ Salvo' : '💾 Salvar' }</button>
+          <button class="small-btn" data-action="fav">${ favs.includes(i) ? '★ Favorito' : '⭐ Favoritar' }</button>
+        </div>
+      </div>
+    `;
+    card.querySelector('[data-action="assistir"]').addEventListener('click', (e)=>{ e.stopPropagation(); window.open(item.link,'_blank'); });
+    card.querySelector('[data-action="salvar"]').addEventListener('click', (e)=>{ e.stopPropagation(); toggleSalvar(i); renderizar(); });
+    card.querySelector('[data-action="fav"]').addEventListener('click', (e)=>{ e.stopPropagation(); toggleFav(i); renderizar(); });
+    card.addEventListener('click', ()=>{ window.open(item.link,'_blank'); });
+    gridEl.appendChild(card);
+  });
+}
+
+function toggleSalvar(idx){ const pos = salvos.indexOf(idx); if(pos===-1){ salvos.push(idx); salvarLocal(KEY_SALVOS,salvos); toast('Adicionado aos salvos'); } else { salvos.splice(pos,1); salvarLocal(KEY_SALVOS,salvos); toast('Removido dos salvos'); } }
+function toggleFav(idx){ const pos = favs.indexOf(idx); if(pos===-1){ favs.push(idx); salvarLocal(KEY_FAVS,favs); toast('Adicionado aos favoritos'); } else { favs.splice(pos,1); salvarLocal(KEY_FAVS,favs); toast('Removido dos favoritos'); } }
+
+document.getElementById('btnTodos').addEventListener('click', ()=>{ filtro='todos'; renderizar(); });
+document.getElementById('btnSalvos').addEventListener('click', ()=>{ filtro='salvos'; renderizar(); });
+document.getElementById('btnFavoritos').addEventListener('click', ()=>{ filtro='favoritos'; renderizar(); });
+document.getElementById('btnVoltar').addEventListener('click', ()=>{ window.location.href='videoaula.html'; });
+
+document.getElementById('searchBtn').addEventListener('click', renderizar);
+searchInput.addEventListener('input', renderizar);
+
+function toast(msg){ const el=document.createElement('div'); el.textContent=msg; el.style.position='fixed'; el.style.right='20px'; el.style.bottom='20px'; el.style.padding='10px 14px'; el.style.background='rgba(106,27,154,0.95)'; el.style.color='white'; el.style.borderRadius='10px'; el.style.boxShadow='0 6px 20px rgba(0,0,0,0.15)'; el.style.zIndex=9999; document.body.appendChild(el); setTimeout(()=>el.remove(),1400); }
+
+renderizar();
+
+// Aplica tema escuro se estiver salvo
+const temaSalvo = localStorage.getItem("theme");
+    if (temaSalvo === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+
+</script>
+</body>
+</html>

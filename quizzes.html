@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quizzes | Matérias</title>
+    <link rel="stylesheet" href="quizzes.css" />
+    <link rel="icon" type="image/png" href="psiu.png">
+</head>
+
+<body>
+
+    <!-- Botão de voltar -->
+    <a href="comeco.html" class="btn-voltar">⬅ Voltar</a>
+
+    <main class="container">
+
+        <h1 class="titulo-pagina">Teste seus conhecimentos com quizzes de todas as matérias! 💜</h1>
+
+        <section class="subjects">
+
+            <a href="abertura-geo.html" class="subject">
+                <img src="geografia-icon.png" alt="">
+                <p>Geografia</p>
+            </a>
+
+            <a href="abertura-quimica.html" class="subject">
+                <img src="quimica-icon.png" alt="">
+                <p>Química</p>
+            </a>
+
+            <a href="abertura-historia.html" class="subject">
+                <img src="historia-icon.png" alt="">
+                <p>História</p>
+            </a>
+
+            <a href="abertura-matematica.html" class="subject">
+                <img src="matematica-icon.png" alt="">
+                <p>Matemática</p>
+            </a>
+
+            <a href="abertura-portugues.html" class="subject">
+                <img src="portugues-icon.png" alt="">
+                <p>Língua Portuguesa</p>
+            </a>
+
+            <a href="abertura-biologia.html" class="subject">
+                <img src="biologia-icon.png" alt="">
+                <p>Biologia</p>
+            </a>
+
+            <a href="abertura-literatura.html" class="subject">
+                <img src="literatura-icon.png" alt="">
+                <p>Literatura</p>
+            </a>
+
+            <a href="abertura-fisica.html" class="subject">
+                <img src="fisica-icon.png" alt="">
+                <p>Física</p>
+            </a>
+
+            <a href="abertura-filosofia.html" class="subject">
+                <img src="filosofia-icon.png" alt="">
+                <p>Filosofia</p>
+            </a>
+
+            <a href="abertura-sociologia.html" class="subject">
+                <img src="sociologia-icon.png" alt="">
+                <p>Sociologia</p>
+            </a>
+
+        </section>
+
+    </main>
+
+<script> 
+
+// Aplica automaticamente o tema salvo
+document.addEventListener("DOMContentLoaded", () => {
+    const temaSalvo = localStorage.getItem("theme");
+
+    if (temaSalvo === "dark") {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  });
+
+</script>
+
+</body>
+</html>

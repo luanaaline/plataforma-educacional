@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #efdafc;
+    background-image: url('backgoundimage.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+  }
+  
+    .form-box {
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+  }
+  
+  .logo {
+    height: 60px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-weight: normal;
+    
+  }
+  
+  .input-email {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    outline: none;
+
+  }
+
+  .input-senha {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    outline: none;
+}
+  
+  .botao-cadastrar {
+    background-color: #f3b736;
+    color: black;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+
+  .botao-cadastrar:hover {
+  background-color: #7b45d0;
+}
+  
+  .ou {
+    margin: 15px 0 10px;
+    font-weight: bold;
+  }
+  
+  .login-social button {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 15px;
+
+  }
+  
+  .login-social img {
+    height: 40px;
+  }
+  
+  .login {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .login a {
+  color: #5a2ea6;
+  text-decoration: none;
+  font-weight: bold;
+  }
+  

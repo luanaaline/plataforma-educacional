@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mapas Mentais</title>
+  <link rel="icon" type="image/png" href="psiu.png" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      background-color: #dbd2f7; /* modo claro */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .btn-voltar {
+      position: fixed;
+      bottom: 45px;
+      left: 45px;
+      background-color: #7F4DBB; /* roxo escuro */
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(106,27,154,0.7);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+      z-index: 100;
+    }
+    .btn-voltar:hover {
+      background-color: #4a0072; /* mais escuro no hover */
+    }
+
+    .container {
+      position: relative;
+      width: 850px;
+      height: 850px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1.title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3.2rem;
+      color: #4a0072; /* roxo escuro */
+      user-select: none;
+      pointer-events: none;
+      z-index: 10;
+      text-align: center;
+      transition: color 0.3s ease;
+    }
+
+    .subjects-circle {
+      position: relative;
+      width: 850px;
+      height: 850px;
+    }
+
+    .subject {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: #7F4DBB; /* roxo escuro */
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #f3e5f5;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .subject img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 12px;
+      pointer-events: none;
+    }
+    .subject p {
+      text-align: center;
+      margin: 0;
+      padding: 0 5px;
+      word-break: break-word;
+    }
+    .subject:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: 90vw;
+        height: 90vw;
+      }
+      .subjects-circle {
+        width: 90vw;
+        height: 90vw;
+      }
+      .subject {
+        width: 100px;
+        height: 100px;
+      }
+      .subject img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 8px;
+      }
+      h1.title {
+        font-size: 2rem;
+      }
+    }
+
+    /* Dark Mode Roxo Total Mais Escuro */
+    body.dark-mode, html.dark-mode {
+      background: radial-gradient(circle at center, #1a0a2b 0%, #3b0d6f 100%);
+      color: #e0c7ff;
+    }
+
+    body.dark-mode h1.title {
+      color: #d1b3ff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    body.dark-mode .subject {
+      background: linear-gradient(145deg, #4a0072, #6a1b9a);
+      color: #f3e5f5;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    }
+
+    body.dark-mode .subject:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.7);
+    }
+
+    body.dark-mode .btn-voltar {
+      background-color: #6a1b9a; /* roxo escuro */
+      color: #fff;
+      box-shadow: 0 6px 12px rgba(106,27,154,0.7);
+    }
+
+    body.dark-mode .btn-voltar:hover {
+      background-color: #4a0072; /* hover mais escuro */
+    }
+  </style>
+</head>
+<body> <!-- sem dark-mode fixo -->
+
+  <button class="btn-voltar" onclick="window.location.href='comeco.html'">⬅ Voltar</button>
+
+  <div class="container">
+    <h1 class="title">Mapas Mentais</h1>
+
+    <div class="subjects-circle">
+      <a href="sociologiamp.html" class="subject">
+        <img src="sociologia-icon.png" alt="Ícone Sociologia" />
+        <p>Sociologia</p>
+      </a>
+      <a href="geografiamp.html" class="subject">
+        <img src="geografia-icon.png" alt="Ícone Geografia" />
+        <p>Geografia</p>
+      </a>
+      <a href="quimicamp.html" class="subject">
+        <img src="quimica-icon.png" alt="Ícone Química" />
+        <p>Química</p>
+      </a>
+      <a href="historimp.html" class="subject">
+        <img src="historia-icon.png" alt="Ícone História" />
+        <p>História</p>
+      </a> 
+      <a href="literaturamp.html" class="subject">
+        <img src="literatura-icon.png" alt="Ícone Literatura" />
+        <p>Literatura</p>
+      </a>
+      <a href="filosofiamp.html" class="subject">
+        <img src="filosofia-icon.png" alt="Ícone Filosofia" />
+        <p>Filosofia</p>
+      </a>
+      <a href="fisicamp.html" class="subject">
+        <img src="fisica-icon.png" alt="Ícone Física" />
+        <p>Física</p>
+      </a>
+      <a href="matematicamp.html" class="subject">
+        <img src="matematica-icon.png" alt="Ícone Matemática" />
+        <p>Matemática</p>
+      </a>
+      <a href="portuguesmp.html" class="subject">
+        <img src="portugues-icon.png" alt="Ícone Língua Portuguesa" />
+        <p>Língua Portuguesa</p>
+      </a>
+      <a href="biologiamp.html" class="subject">
+        <img src="biologia-icon.png" alt="Ícone Biologia" />
+        <p>Biologia</p>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const subjects = document.querySelectorAll('.subject');
+    const circle = document.querySelector('.subjects-circle');
+
+    const circleWidth = circle.offsetWidth;
+    const circleHeight = circle.offsetHeight;
+
+    const centerX = circleWidth / 2;
+    const centerY = circleHeight / 2;
+
+    const radius = circleWidth / 2 - 90;
+    const total = subjects.length;
+
+    subjects.forEach((card, i) => {
+      const angle = (2 * Math.PI / total) * i - Math.PI / 2;
+      const x = centerX + radius * Math.cos(angle);
+      const y = centerY + radius * Math.sin(angle);
+      card.style.left = `${x}px`;
+      card.style.top = `${y}px`;
+      card.style.transform = 'translate(-50%, -50%)';
+    });
+
+    // Aplica tema escuro se estiver salvo
+    const temaSalvo = localStorage.getItem("theme");
+    if (temaSalvo === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  </script>
+
+</body>
+</html>

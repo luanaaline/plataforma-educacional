@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Escolher | Redação</title>
+  <link rel="stylesheet" href="redacaoescolha.css">
+  <link rel="icon" type="image/png" href="psiu.png">
+</head>
+<body>
+  <main>
+    <section class="tema-escolhido">
+      <h2>Tema Escolhido: <span>⭐</span></h2>
+      <p id="tema-escolhido-texto">Carregando tema...</p>
+    </section>
+
+    <div class="input-group">
+      <select id="tipo-texto">
+        <option value="" disabled selected>Selecione o tipo de texto</option>
+        <option value="dissertativo">Dissertativo</option>
+        <option value="narrativo">Narrativo</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <select id="genero-textual">
+        <option value="" disabled selected>Gênero Textual</option>
+      </select>
+    </div>
+
+    <button class="btn-comecar" onclick="comecarRedacao()">Começar Redação</button>
+    <button class="btn-voltar" onclick="window.location.href='redacao.html'">⬅ Voltar</button>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tema = localStorage.getItem("temaEscolhido");
+      const temaElemento = document.getElementById("tema-escolhido-texto");
+      temaElemento.textContent = tema || "Nenhum tema selecionado.";
+
+      const temaSalvo = localStorage.getItem("theme");
+      if (temaSalvo === "dark") document.body.classList.add("dark-mode");
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const tipoTexto = document.getElementById("tipo-texto");
+      const generoTextual = document.getElementById("genero-textual");
+
+      const opcoesGeneros = {
+        dissertativo: [
+          { value: "dissertacao-argumentativa", text: "Dissertação Argumentativa" },
+          { value: "resenha-critica", text: "Resenha Crítica" },
+          { value: "dissertacao-expositiva", text: "Dissertação Expositiva" },
+          { value: "artigo-opiniao", text: "Artigo de Opinião" }
+        ],
+        narrativo: [
+          { value: "cronica", text: "Crônica" },
+          { value: "conto", text: "Conto" },
+          { value: "relato", text: "Relato" },
+          { value: "noticia", text: "Notícia" }
+        ]
+      };
+
+      tipoTexto.addEventListener("change", () => {
+        const tipoSelecionado = tipoTexto.value;
+        localStorage.setItem("tipoTexto", tipoSelecionado);
+        generoTextual.innerHTML = '<option value="" disabled selected>Gênero Textual</option>';
+        if (opcoesGeneros[tipoSelecionado]) {
+          opcoesGeneros[tipoSelecionado].forEach(opcao => {
+            const option = document.createElement("option");
+            option.value = opcao.value;
+            option.textContent = opcao.text;
+            generoTextual.appendChild(option);
+          });
+        }
+      });
+
+      generoTextual.addEventListener("change", () => {
+        const generoSelecionado = generoTextual.options[generoTextual.selectedIndex].textContent;
+        localStorage.setItem("genero", generoSelecionado);
+      });
+    });
+
+    function comecarRedacao() {
+      // CLEAN STATE: remove quaisquer chaves que forcem EDIT/VIEW
+      localStorage.removeItem("modoRedacao");
+      localStorage.removeItem("idRedacao");
+      // Define explicitamente modo create (opcional, mas seguro)
+      localStorage.setItem("modoRedacao", "create");
+      // Agora vai para a página de criação (limpa)
+      window.location.href = "criacao.html";
+    }
+  </script>
+</body>
+</html>

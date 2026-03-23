@@ -1,0 +1,89 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #efdafc;
+  background-image: url('backgoundimage.png'); /* sua imagem de fundo */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-box {
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 350px;
+}
+
+.form-box .logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.form-box h2 {
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.form-box input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.form-box input:focus {
+  border-color: #5a2ea6;
+  box-shadow: 0 0 5px rgba(90,46,166,0.5);
+}
+
+.botao-login {
+background-color: #f3b736;
+    color: black;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.botao-login:hover {
+  background-color: #7b45d0;
+}
+
+.form-box p.login {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.form-box p.login a {
+  color: #5a2ea6;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form-box p.login a:hover {
+  text-decoration: underline;
+}

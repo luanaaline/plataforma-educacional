@@ -1,0 +1,170 @@
+/* ======= RESET ======= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* ======= CORES ======= */
+:root {
+    --bg: #cda7f9;         
+    --card: #e4c9ff;       
+    --text: #3a145c;       
+}
+
+/* ======= CONTAINER ======= */
+body, html {
+    height: 100%;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+}
+
+/* ======= ILUSTRAÇÃO ======= */
+.illustration {
+    position: absolute;
+    left: 60px;
+    bottom: 50px;
+}
+
+.illustration img {
+    max-width: 280px;
+    height: auto;
+}
+
+/* ======= BOTÕES PRINCIPAIS ======= */
+.buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 170px;
+    background-color: var(--card);
+    color: var(--text);
+    font-weight: 700;
+    font-size: 28px;
+    text-decoration: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    background-color: #d7b9ff;
+}
+
+/* ======= BOTÃO VOLTAR ======= */
+.back-btn {
+    position: absolute;
+    top: 45px;
+    left: 50px;
+    background-color: #ebdd3f;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #ede15e;
+    transform: translateY(-2px);
+}
+
+/* ======= RESPONSIVO ======= */
+@media (max-width: 900px) {
+    .illustration {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .illustration img {
+        max-width: 200px;
+    }
+
+    .buttons {
+        position: static;
+        transform: none;
+        margin-top: 40px;
+        gap: 30px;
+    }
+
+    .btn {
+        width: 300px;
+        height: 100px;
+        font-size: 18px;
+    }
+}
+
+
+/* ========================================================= */
+/* ======= 🌙 TEMA ESCURO (body.dark-mode) ======= */
+/* ========================================================= */
+
+body.dark-mode {
+    background-color: #0f0e10; /* Roxo escuro mais profundo */
+    color: #cbbcff; /* Lilás claro para texto */
+}
+
+/* Container permanece transparente */
+body.dark-mode .container {
+    background-color: transparent;
+}
+
+/* Botões no modo escuro */
+body.dark-mode .btn {
+    background-color: #360b4f; /* Roxo escuro mais intenso */
+    color: #e8dfff;
+    box-shadow: 0 4px 10px rgba(22, 2, 31, 0.8);
+}
+
+body.dark-mode .btn:hover {
+    background-color: #360b4f; /* Roxo mais claro e vibrante */
+    transform: translateY(-5px);
+}
+
+/* Botão voltar no modo escuro */
+body.dark-mode .back-btn {
+    background-color: #360b4f;
+    color: #e8dfff;
+    box-shadow: 0 3px 6px rgba(22, 2, 31, 0.8);
+}
+
+body.dark-mode .back-btn:hover {
+    background-color: #360b4f;
+    transform: translateY(-2px);
+}
+
+/* Ilustração escurecida para combinar com o fundo */
+body.dark-mode .illustration img {
+    filter: brightness(0.7) contrast(1.3);
+}
+
+/* Responsividade no modo escuro */
+@media (max-width: 900px) {
+    body.dark-mode .btn {
+        background-color: #7a1ea6;
+    }
+
+    body.dark-mode .btn:hover {
+        background-color: #b45de6;
+    }
+}

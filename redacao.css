@@ -1,0 +1,189 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3eaff;
+  background-image: url('fundoo.png'); /* pode ser SVG ou imagens */
+  background-repeat: repeat;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  background-image: url('fundinhoblack.png'); /* mesma imagem escura */
+}
+
+body.dark-mode .tema-semana,
+body.dark-mode .outras-sugestoes {
+  background-color: #c59cfa;
+  color: #000000;
+}
+
+body.dark-mode .navegacao a.voltar,
+body.dark-mode .navegacao a.seguinte {
+  background-color: #ffc630;
+  color: #000;
+}
+
+body.dark-mode input#busca-temas {
+  background-color: #161616;
+  color: #fff;
+  border: none;
+}
+
+body.dark-mode .resultados-busca {
+  background-color: #2b2b2b;
+  color: #ffffff;
+  border-color: #444;
+}
+
+body.dark-mode .resultados-busca li {
+  border-bottom: 1px solid #444;
+}
+
+body.dark-mode .resultados-busca li:hover {
+  background-color: #3a3a3a;
+}
+
+header {
+  background-color: #c59cfa;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+
+header input {
+  padding: 12px 20px;
+  border-radius: 20px;
+  border: none;
+  font-size: 14px;
+}
+
+.icone-busca {
+  margin-left: 10px;
+  font-size: 30px;
+}
+
+main {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.tema-semana,
+.outras-sugestoes {
+  background-color: #e8d7fb;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 20px auto;
+  max-width: 700px;
+}
+
+.tema-semana h2 {
+  margin-top: 0;
+  font-weight: bold;
+}
+
+.outras-sugestoes h3 {
+  text-align: left;
+  font-weight: bold;
+}
+
+.outras-sugestoes ul {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.outras-sugestoes li {
+  margin-bottom: 10px;
+}
+
+.navegacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+/* Estilo para os links que funcionam como botões */
+
+.navegacao a.voltar {
+  position: fixed;
+  bottom: 120px;
+  left: 10%;
+  width: 150px; /* largura fixa */
+  text-align: center;
+  padding: 18px 0;
+}
+
+.navegacao a.seguinte {
+  position: fixed;
+  bottom: 120px;
+  right: 10%;
+  width: 150px; /* mesma largura */
+  text-align: center;
+  padding: 18px 0;
+}
+
+.navegacao a.voltar,
+.navegacao a.seguinte {
+  background-color: #ffc630;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.navegacao a.voltar:hover,
+.navegacao a.seguinte:hover {
+  background-color: #ffc630;
+  text-decoration: none;
+  color: #000;
+}
+
+.resultados-busca {
+  background: #fff;
+  /* border: 1px solid #ccc;  Removido para tirar a linha */
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 5px;
+  padding: 0;
+  width: 300px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 1000;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+.resultados-busca ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.resultados-busca li {
+  padding: 10px 15px;
+  transition: background-color 0.2s ease;
+  border-bottom: none; /* remove linha em todos os itens */
+}
+
+.resultados-busca li:last-child {
+  border-bottom: none; /* garante que o último não tenha linha */
+}
+
+.resultados-busca li:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}

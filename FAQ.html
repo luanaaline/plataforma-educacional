@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas Frequentes | EducAê</title>
+    <link rel="icon" type="image/png" href="psiu.png">
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f4edff;
+            margin: 0;
+            padding: 0;
+            color: #4a356d;
+        }
+
+        header {
+            background: linear-gradient(90deg, #6f3dc4, #9b6be0);
+            padding: 40px 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        .page-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* Caixa FAQ */
+        .container {
+            flex: 2;
+            min-width: 500px;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.07);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-answer {
+            margin-top: 10px;
+            display: none;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Caixa lateral */
+        .side-box {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.07);
+            height: fit-content;
+            position: sticky;
+            top: 50px;
+        }
+
+        .side-box h2 {
+            margin-top: 0;
+            color: #6f3dc4;
+        }
+
+        .side-box p {
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .email {
+            margin-top: 10px;
+            font-weight: 600;
+            color: #6f3dc4;
+            font-size: 1.05rem;
+        }
+
+        /* BOTÃO VOLTAR NO CANTO INFERIOR */
+        .btn-back {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #6f3dc4;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .btn-back:hover {
+            background: #9b6be0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+        }
+
+        /* DARK MODE */
+        body.dark-mode {
+            background: #1e1e2f;
+            color: #dddde6;
+        }
+
+        body.dark-mode header {
+            background: linear-gradient(90deg, #4b2c91, #6f42c1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+            color: #f0e9ff;
+        }
+
+        body.dark-mode .faq-item {
+            background: #2c2b3e;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+            color: #dddde6;
+        }
+
+        body.dark-mode .faq-item:hover {
+            transform: translateY(-4px);
+            background: #3a398f;
+            box-shadow: 0 6px 14px rgba(69, 51, 165, 0.9);
+        }
+
+        body.dark-mode .faq-question {
+            color: #e1dfff;
+        }
+
+        body.dark-mode .faq-answer {
+            color: #cfcfff;
+        }
+
+        body.dark-mode .side-box {
+            background: #2c2b3e;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+            color: #dcdcff;
+        }
+
+        body.dark-mode .side-box h2 {
+            color: #b1aaff;
+        }
+
+        body.dark-mode .side-box p,
+        body.dark-mode .side-box .email {
+            color: #d1d1f0;
+        }
+
+        /* DARK MODE BOTÃO */
+        body.dark-mode .btn-back {
+            background: #4b2c91;
+            color: #f0e9ff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+        }
+
+        body.dark-mode .btn-back:hover {
+            background: #6f42c1;
+            box-shadow: 0 6px 14px rgba(69, 51, 165, 0.9);
+        }
+
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const faqs = document.querySelectorAll(".faq-item");
+
+            faqs.forEach(faq => {
+                faq.addEventListener("click", () => {
+                    faq.classList.toggle("active");
+                });
+            });
+
+            // Aplica automaticamente o tema salvo
+            const temaSalvo = localStorage.getItem("theme");
+
+            if (temaSalvo === "dark") {
+                document.body.classList.add("dark-mode");
+            } else {
+                document.body.classList.remove("dark-mode");
+            }
+        });
+    </script>
+
+</head>
+<body>
+
+<header>
+    <h1>Perguntas Frequentes | EducAê</h1>
+</header>
+
+<div class="page-wrap">
+
+    <!-- LADO ESQUERDO: FAQ -->
+    <div class="container">
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>O que é o Educae?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                O Educae é uma plataforma educacional criada para facilitar o aprendizado, oferecendo conteúdos de qualidade, linguagem simples e ferramentas para estudantes e professores.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>O Educae é gratuito?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                Sim! Parte do conteúdo é totalmente gratuito. Alguns materiais especiais podem estar disponíveis em planos premium.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Quais tipos de conteúdo posso encontrar?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                Você encontrará videoaulas, simulados, ferramenta de criação de redações e mapas mentais de várias matérias.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Como posso entrar em contato com o suporte?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                Basta enviar um e-mail para educae.mentoriae@gmail.com 
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Preciso criar uma conta?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                Sim, criar uma conta permite salvar seu progresso e acessar todos os recursos.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Os conteúdos do Educae são atualizados com que frequência?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                Atualizamos nossos materiais regularmente, incluindo novos mapas mentais, e simulados conforme surgem mudanças curriculares e novas demandas estudantis.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>O Educae oferece simulados?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                Sim! Há simulados para diversas matérias, todos com correção automática para facilitar seu aprendizado.
+            </div>
+        </div>
+
+    
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>O Educae possui materiais voltados ao ENEM?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                Sim! Temos resumos, exercícios, simulados e mapas mentais voltados especialmente para o ENEM e vestibulares.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- LADO DIREITO: MENSAGEM -->
+    <div class="side-box">
+        <h2>💡 Ainda com dúvidas?</h2>
+        <p>Se você não encontrou sua resposta aqui no FAQ, nossa equipe está pronta para ajudar!</p>
+        <p class="email">📩 educae.mentoriae@gmail.com</p>
+    </div>
+
+</div>
+
+<!-- BOTÃO VOLTAR -->
+<a href="comeco.html" class="btn-back">Voltar</a>
+
+</body>
+</html>

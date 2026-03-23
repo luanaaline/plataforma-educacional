@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portal de Matérias</title>
+    <link rel="stylesheet" href="videoaula.css" />
+    <link rel="icon" type="image/png" href="psiu.png">
+</head>
+<body>
+    <div class="app-container">
+
+        <!-- Barra lateral -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="book-character.png" alt="Logo do mascote" class="mascot" />
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="comeco.html">⬅ Voltar</a>
+            </nav>
+        </aside>
+
+        <!-- Área principal -->
+        <main class="main-content">
+            <div class="search-container">
+                <input type="text" placeholder="Buscar matéria" class="search-bar" id="searchInput" />
+                <button class="search-btn">🔍</button>
+            </div>
+
+            <section class="subjects" id="subjectsContainer">
+                <a href="geovd.html" class="subject">
+                    <img src="geografia-icon.png" alt="Geografia" />
+                    <p>Geografia</p>
+                </a>
+                <a href="quimicavd.html" class="subject">
+                    <img src="quimica-icon.png" alt="Química" />
+                    <p>Química</p>
+                </a>
+                <a href="historiavd.html" class="subject">
+                    <img src="historia-icon.png" alt="História" />
+                    <p>História</p>
+                </a>
+                <a href="matematicavd.html" class="subject">
+                    <img src="matematica-icon.png" alt="Matemática" />
+                    <p>Matemática</p>
+                </a>
+                <a href="portuguesvd.html" class="subject">
+                    <img src="portugues-icon.png" alt="Língua Portuguesa" />
+                    <p>Língua Portuguesa</p>
+                </a>
+                <a href="biologiavd.html" class="subject">
+                    <img src="biologia-icon.png" alt="Biologia" />
+                    <p>Biologia</p>
+                </a>
+                <a href="literaturavd.html" class="subject">
+                    <img src="literatura-icon.png" alt="Literatura" />
+                    <p>Literatura</p>
+                </a>
+                <a href="fisicavd.html" class="subject">
+                    <img src="fisica-icon.png" alt="Física" />
+                    <p>Física</p>
+                </a>
+                <a href="filosofiavd.html" class="subject">
+                    <img src="filosofia-icon.png" alt="Filosofia" />
+                    <p>Filosofia</p>
+                </a>
+                <a href="sociologiavd.html" class="subject">
+                    <img src="sociologia-icon.png" alt="Sociologia" />
+                    <p>Sociologia</p>
+                </a>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.querySelector('.search-btn');
+        const subjects = document.querySelectorAll('.subject');
+
+        // Função para filtrar as matérias
+        function filterSubjects() {
+            const filter = searchInput.value.toLowerCase().trim();
+
+            subjects.forEach(subject => {
+                const text = subject.querySelector('p').textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    subject.style.display = 'flex';
+                } else {
+                    subject.style.display = 'none';
+                }
+            });
+        }
+
+        // Eventos de busca
+        searchInput.addEventListener('input', filterSubjects);
+        searchButton.addEventListener('click', filterSubjects);
+        searchInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                filterSubjects();
+            }
+        });
+
+  // Aplica automaticamente o tema salvo
+  document.addEventListener("DOMContentLoaded", () => {
+    const temaSalvo = localStorage.getItem("theme");
+
+    if (temaSalvo === "dark") {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  });
+
+    </script>
+</body>
+</html>

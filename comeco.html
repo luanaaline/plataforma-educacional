@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página de Estudos</title>
+  <link rel="stylesheet" href="comeco.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="psiu.png">
+</head>
+<body>
+  <div class="container">
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="eduk.png" alt="Logo do app" />
+      </div>
+      <div class="sidebar-bottom">
+        <div class="config" id="open-config">
+          <img src="conf.png" alt="Configuração" />
+          <span>Config.</span>
+        </div>
+
+        <!-- Usuário com avatar clicável -->
+        <div class="user" id="user-section">
+          <img id="current-avatar" src="usuario.png" alt="Usuário" />
+          <span id="userNameDisplay">Seu Nome</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Conteúdo principal -->
+<main class="content">
+  <div class="card">
+    <a href="mapasmentais.html" class="card-link">
+      <img src="mente.png" alt="Mapas Mentais" />
+      <p>Mapas Mentais</p>
+    </a>
+  </div>
+  <div class="card">
+    <a href="videoaula.html" class="card-link">
+      <img src="computador.png" alt="Vídeo Aulas" />
+      <p>Vídeo Aulas</p>
+    </a>
+  </div>
+  <div class="card">
+    <a href="quizzes.html" class="card-link">
+      <img src="quiz.png" alt="Quiz e Simulados" />
+      <p>Quiz e Simulados</p>
+    </a>
+  </div>
+  <div class="card">
+    <a href="reda.html" class="card-link">
+      <img src="redacao.png" alt="Redações" />
+      <p>Redações</p>
+    </a>
+  </div>
+  
+  <div class="card">
+    <a href="FAQ.html" class="card-link">
+      <img src="forum.png" alt="Perguntas Frequentes" />
+      <p>Perguntas Frequentes</p>
+    </a>
+  </div>
+</main>
+
+
+  <!-- Modal de seleção de avatar -->
+  <div id="avatar-modal" class="hidden">
+    <div class="avatar-container">
+      <button class="close-btn" id="close-modal">&times;</button>
+      <img src="avatar1.png" class="avatar-option" alt="Avatar 1">
+      <img src="avatar2.png" class="avatar-option" alt="Avatar 2">
+      <img src="avatar3.png" class="avatar-option" alt="Avatar 3">
+      <img src="avatar4.png" class="avatar-option" alt="Avatar 4">
+      <img src="avatar5.png" class="avatar-option" alt="Avatar 5">
+      <img src="avatar6.png" class="avatar-option" alt="Avatar 6">
+      <img src="avatar7.png" class="avatar-option" alt="Avatar 7">
+      <img src="avatar8.png" class="avatar-option" alt="Avatar 8">
+      <img src="avatar9.png" class="avatar-option" alt="Avatar 9">
+    </div>
+  </div>
+  
+
+  <!-- Modal para editar nome -->
+  <div id="name-modal" class="hidden">
+  <div class="name-container">
+    <button class="close-btn" id="close-name-modal">&times;</button>
+    <h2>Editar Nome</h2>
+    
+    <div class="name-input-group">
+      <input type="text" id="name-input" placeholder="Digite seu nome" />
+      <button id="save-name-btn">Salvar</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal de Configurações -->
+  <div id="config-modal" class="hidden">
+    <div class="config-container">
+      <!-- BLOCO ESQUERDO -->
+      <div class="config-left">
+        <h2>Configurações</h2>
+        <ul>
+          <li id="change-theme">Aparência</li>
+          <li id="logout">Sair</li>
+        </ul>
+      </div>
+
+      <!-- LINHA DIVISORA NO MEIO -->
+      <div class="divisor"></div>
+
+      <!-- BLOCO DIREITO -->
+      <div class="config-right" id="config-content">
+        <button class="close-config">&times;</button>
+
+        <!-- Conteúdo Aparência -->
+        <div id="content-aparencia" class="content-section active">
+          <h3><span>🌗</span> Tema</h3>
+          <div class="radio-group">
+            <label><input type="radio" name="tema" id="lightMode"> Claro</label>
+            <label><input type="radio" name="tema" id="darkMode"> Escuro</label>
+          </div>
+        </div>
+
+        <!-- Conteúdo Sair -->
+        <div id="content-sair" class="content-section">
+          <h4>Sair do EducaÊ</h4> 
+          <p>Seus dados ficarão salvos</p>
+          <div class="logout-buttons">
+            <button class="cancelar">Cancelar</button>
+            <button class="sair">Sair</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="comeco.js"></script>
+</body>
+</html>
